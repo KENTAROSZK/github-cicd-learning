@@ -1,6 +1,6 @@
 name: workflow name
 # コミットメッセージと実行者名を明示する
-run-name: ${{ github.event.head_commit.message }} by @${{ github.actor }}
+run-name: ${{ github.actor }} -> ${{ github.event.head_commit.message }}
 
 # bashを使った実行による不便なところをなくすために、おまじないとして入れておく
 defaults:
