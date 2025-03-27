@@ -9,3 +9,7 @@ jobs:
       - run: echo "${{github.workspace}}"
       - run: echo "${{github.repository}}"
       - run: echo "${{github.event}}"
+      - run: echo "${{runner.name}}"
+      - run: echo "${{runner.os}}"
+      - run: echo "${{runner.arch}}"
+      - run: echo "${{runner.temp}}"
