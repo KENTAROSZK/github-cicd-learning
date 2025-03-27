@@ -1,0 +1,9 @@
+name: intermediate-environment-variables
+on: push
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    env:
+      ACTOR: ${{github.actor}} # context var is set as env var
+    steps:
+      - run: echo "${ACTOR}"
