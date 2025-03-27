@@ -8,6 +8,7 @@ jobs:
       pull-requests: write
       contents: read
     steps:
+      - run: echo "${GITHUB_HEAD_REF}"
       - uses: actions/checkout@v4
       - run: gh pr comment "${GITHUB_HEAD_REF}" --body "Hello, ${GITHUB_ACTOR}!"
         env:
