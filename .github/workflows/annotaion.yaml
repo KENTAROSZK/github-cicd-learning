@@ -1,0 +1,9 @@
+name: Annotation
+on: push
+jobs:
+  log:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "::error::Set the Octocat variable"
+      - run: echo "::warning::Set the Octocat variable"
+      - run: echo "::notice::Set the Octocat variable"

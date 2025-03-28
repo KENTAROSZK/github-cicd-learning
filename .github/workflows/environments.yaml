@@ -1,0 +1,29 @@
+name: Environments
+# コミットメッセージと実行者名を明示する
+run-name: ${{ github.actor }} -> ${{ github.event.head_commit.message }}
+
+# bashを使った実行による不便なところをなくすために、おまじないとして入れておく
+defaults:
+  run:
+    shell: bash ## shellキーでbashを指定しておくだけで、パイプラインの処理エラーを無視するのをやめさせることができる
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment-name:
+        type: environment
+        default: test
+        required: false
+        description: environment name
+
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    environment: ${{inputs.environment-name}}
+    env:
+      USERNAME: ${{vars.USERNAME}}
+      PASSOWRD: ${{secrets.PASSWORD}}
+    steps:
+      - run: echo "${USERNAME}"
+      - run: echo "${PASSWORD:0:1} ${PASSWORD#?}"
+
