@@ -1,0 +1,19 @@
+name: JobSummaries
+# コミットメッセージと実行者名を明示する
+run-name: ${{ github.actor }} -> ${{ github.event.head_commit.message }}
+
+# bashを使った実行による不便なところをなくすために、おまじないとして入れておく
+defaults:
+  run:
+    shell: bash ## shellキーでbashを指定しておくだけで、パイプラインの処理エラーを無視するのをやめさせることができる
+
+on: push
+
+jobs:
+  log:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+        echo "# title :rocket:" >> "${GITHUB_STEP_SUMMARY}"
+        echo "- first bullet line" >> "${GITHUB_STEP_SUMMARY}"
+        echo "- second bullet line" >> "${GITHUB_STEP_SUMMARY}"
