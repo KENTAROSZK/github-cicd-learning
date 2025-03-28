@@ -10,9 +10,7 @@ defaults:
 on: push
 
 jobs:
-  print:
-    name: simple job # Jobの名前 ここには実行者名を入れることができない
+  log:
     runs-on: ubuntu-latest
     steps:
-      - name: simple step # 実行ステップの名前 ここには実行者名を入れることができない
-        run: echo "hello"
+      - run: echo "::debug:: This is a debug log"
