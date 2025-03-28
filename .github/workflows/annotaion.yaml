@@ -4,4 +4,4 @@ jobs:
   log:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "::debug:: This is a debug log message"
+      - run: echo "::debug::Set the Octocat variable"
