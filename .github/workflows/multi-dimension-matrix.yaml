@@ -1,0 +1,27 @@
+name: Multi-Dimension Matrix
+# コミットメッセージと実行者名を明示する
+run-name: ${{ github.actor }} -> ${{ github.event.head_commit.message }}
+
+# bashを使った実行による不便なところをなくすために、おまじないとして入れておく
+defaults:
+  run:
+    shell: bash ## shellキーでbashを指定しておくだけで、パイプラインの処理エラーを無視するのをやめさせることができる
+
+on: push
+
+jobs:
+  print:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        version: [3.10, 3.11, 3.12]
+    runs-on: ${{matrix.os}}
+    steps:
+      - name: set up python environments
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{matrix.version}}
+      - run: echo "${RUNNER_OS}"
+      - run: python -v
+
+
