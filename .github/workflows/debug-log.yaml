@@ -4,4 +4,4 @@ jobs:
   log:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, world!"
+      - run: echo "::debug:: Hello, world!"
