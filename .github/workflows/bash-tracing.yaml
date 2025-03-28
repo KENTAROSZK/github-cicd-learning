@@ -10,3 +10,4 @@ jobs:
           hostname
           whoami
           echo "Hello, world!"
+          id
