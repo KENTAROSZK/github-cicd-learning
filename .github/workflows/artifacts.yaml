@@ -1,0 +1,26 @@
+name: Environments
+run-name: ${{ github.actor }} -> ${{ github.event.head_commit.message }}
+defaults:
+  run:
+    shell: bash ## shellキーでbashを指定しておくだけで、パイプラインの処理エラーを無視するのをやめさせることができる
+on: push
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - run: date > date.txt # save artifact
+      - uses: actions/upload-artifact@v4
+        with:
+          name: artifact-name
+          path: date.txt
+  download:
+    runs-on: ubuntu-latest
+    needs: [upload]
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: artifact-name
+          path: download-dest-path
+      - run: cat download-dest-path/date.txt
+
