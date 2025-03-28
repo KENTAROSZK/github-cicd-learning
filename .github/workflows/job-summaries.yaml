@@ -14,6 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-        echo "# title :rocket:" >> "${GITHUB_STEP_SUMMARY}"
+        echo "## title :rocket:" >> "${GITHUB_STEP_SUMMARY}"
         echo "- first bullet line" >> "${GITHUB_STEP_SUMMARY}"
         echo "- second bullet line" >> "${GITHUB_STEP_SUMMARY}"
