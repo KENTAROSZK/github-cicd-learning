@@ -8,4 +8,4 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-go@v4 # old ver.
+      - uses: actions/setup-go@v5 # old ver.
