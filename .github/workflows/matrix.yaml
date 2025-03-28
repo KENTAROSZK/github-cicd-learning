@@ -1,0 +1,21 @@
+name: Matrix
+# コミットメッセージと実行者名を明示する
+run-name: ${{ github.actor }} -> ${{ github.event.head_commit.message }}
+
+# bashを使った実行による不便なところをなくすために、おまじないとして入れておく
+defaults:
+  run:
+    shell: bash ## shellキーでbashを指定しておくだけで、パイプラインの処理エラーを無視するのをやめさせることができる
+
+on: push
+
+jobs:
+  print:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{matrix.os}}
+    steps:
+      - run: echo "${RUNNER_OS}"
+
+
