@@ -13,7 +13,8 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: artifact-name
-          path: date.txt
+          path: date.txt # the path which you wanna upload.
+          retention-days: 7 # period which Github saves this artifact. default is 90 days.
   download:
     runs-on: ubuntu-latest
     needs: [upload]
@@ -21,6 +22,6 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: artifact-name
-          path: download-dest-path
+          path: download-dest-path # the destination of the directory which you wanna download into.
       - run: cat download-dest-path/date.txt
 
