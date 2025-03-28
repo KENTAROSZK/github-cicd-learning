@@ -14,10 +14,10 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        version: [3.10, 3.11, 3.12]
+        version: ['3.10', '3.11', '3.12']
     runs-on: ${{matrix.os}}
     steps:
-      - name: set up python environments
+      - name: set up python ${{matrix.version}} environments
         uses: actions/setup-python@v4
         with:
           python-version: ${{matrix.version}}
